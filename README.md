@@ -1,4 +1,4 @@
-# Prim_Kruskal-Algos
+# Prim_Dijikstra-Algos
 This is an implementation of Prim &amp; Kruskal Algorithms using JAVA
 
 ![alt text](https://i.imgur.com/cNKUrnv.jpg "Prim_Dijikstra!")
