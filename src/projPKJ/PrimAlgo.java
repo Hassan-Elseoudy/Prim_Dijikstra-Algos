@@ -1,11 +1,12 @@
-package primPKJ;
+package projPKJ;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 class PrimAlgo {
-	// Number of vertices in the graph
-	private static int V = 0;
-	private static int COUNT = 0;
+	
+	private static int V = 0; // Number of vertices in the graph
 
 	// find the vertex with minimum key value
 	static int findMinKey(int key[], Boolean vertixQueue[]) {
@@ -36,7 +37,7 @@ class PrimAlgo {
 
 		// 1st vertex in MST.
 		key[0] = 0; // Make key 0 so that this vertex is
-		parent[0] = -1; // First node is always root of MST
+		parent[0] = -1; // Cosidering first element as starting point
 
 		// The MST will have V vertices
 		for (int i = 0; i < V - 1; i++) {
@@ -50,9 +51,6 @@ class PrimAlgo {
 			// vertex.
 			for (int v = 0; v < V; v++)
 
-				// graph[u][v] is non zero only for adjacent vertices of m
-				// mstSet[v] is false for vertices !included
-				// Update key if graph[u][v] is smaller than key[v]
 				if (graph[u][v] != 0 && vertixQueue[v] == false && graph[u][v] < key[v]) {
 					parent[v] = u;
 					key[v] = graph[u][v];
@@ -60,6 +58,7 @@ class PrimAlgo {
 		}
 		
 		System.out.println("Edge   Weight");
+		int COUNT = 0;
 		for (int i = 1; i < V; i++) {
 			System.out.println(parent[i] + " -> " + i + "    " + graph[i][parent[i]]);
 			COUNT += graph[i][parent[i]];
@@ -67,14 +66,13 @@ class PrimAlgo {
 		System.out.println("Total weight of the MST -> "+COUNT);
 	}
 
-	public static void main(String[] args) {
-		Scanner s = new Scanner(System.in);
-		System.out.println("Enter # of nodes (Verticies)?");
+	public static void readPrimAlgoFile() throws FileNotFoundException {
+		File file = new File("testPrim.txt");
+		Scanner s = new Scanner(file);
 		V = s.nextInt();
 		int[][] graph = new int[V][V];
 
 		for (int i = 0; i < V; i++) { // Scanning the graph
-			System.out.println("Enter edges weight for vertix " + i + " from 0 -> " + (V - 1));
 			for (int j = 0; j < V; j++)
 				graph[i][j] = s.nextInt();
 		}
