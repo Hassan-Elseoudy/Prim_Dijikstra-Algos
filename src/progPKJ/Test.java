@@ -1,4 +1,4 @@
-package projPKJ;
+package progPKJ;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
